@@ -3,6 +3,8 @@
 use App\Http\Controllers\signInController;
 use App\Http\Controllers\signUpController;
 use App\Http\Controllers\homePageController;
+use App\Http\Controllers\productDetailsController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +31,8 @@ Route::post('sign-up',[signUpController::class,'postSignUp']);
 
 Route::get('home-page',[homePageController::class,'getHomePage'])->name('home-page');
 
+Route::get('product-details',[productDetailsController::class,'getProductDetails']);
+
+Route::post('chooseColor',[productDetailsController::class,'chooseColor']);
 
 
