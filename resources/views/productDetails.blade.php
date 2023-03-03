@@ -1863,7 +1863,7 @@
                                     <div class="row gx-lg-5">
                                         <div class="col-xl-4 col-md-8 mx-auto">
                                             <div class="product-img-slider sticky-side-div">
-                                                <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
+                                                <div class="swiper product-thumbnail-slider p-2 rounded bg-light bigSwiper">
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
                                                             <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
