@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\client;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use Session;
 class signUpController extends Controller
 {
     private $users = array();
     public function getSignUp()
     {
-        return view('signUp');
+        return view('client.signUp');
     }
 
     public function postSignUp(Request $req)

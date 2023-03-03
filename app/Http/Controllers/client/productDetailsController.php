@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\client;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 
 class productDetailsController extends Controller
 {
     public function getProductDetails()
     {
-        return view('productDetails');
+        return view('client.productDetails');
     }
 
     public function chooseColor(Request $req)

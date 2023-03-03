@@ -1,9 +1,15 @@
 <?php
 
-use App\Http\Controllers\signInController;
-use App\Http\Controllers\signUpController;
-use App\Http\Controllers\homePageController;
-use App\Http\Controllers\productDetailsController;
+use App\Http\Controllers\client\signInController;
+use App\Http\Controllers\client\signUpController;
+use App\Http\Controllers\client\homePageController;
+use App\Http\Controllers\client\productDetailsController;
+use App\Http\Controllers\client\shoppingCartController;
+use App\Http\Controllers\client\checkOutController;
+use App\Http\Controllers\admin\productHandleController;
+use App\Http\Controllers\admin\addProductController;
+use App\Http\Controllers\admin\orderHandleController;
+use App\Http\Controllers\admin\orderDetailsController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -36,3 +42,16 @@ Route::get('product-details',[productDetailsController::class,'getProductDetails
 Route::post('chooseColor',[productDetailsController::class,'chooseColor']);
 
 
+Route::get('shopping-cart',[shoppingCartController::class,'getShoppingCart']);
+
+Route::get('check-out',[checkOutController::class,'getCheckOut']);
+
+
+Route::get('product-handle',[productHandleController::class,'getProductHandle']);
+
+
+Route::get('add-product',[addProductController::class,'getAddProduct']);
+
+Route::get('order-handle',[orderHandleController::class,'getOrderHandle']);
+
+Route::get('order-details',[orderDetailsController::class,'getOrderDetails']);
