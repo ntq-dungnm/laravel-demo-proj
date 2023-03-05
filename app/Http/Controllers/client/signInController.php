@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\client;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use PDO;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +14,7 @@ class signInController extends Controller
 {
     public function getsignIn()
     {
-        return view('signIn');
+        return view('client.signIn');
     }
 
     public function postSignIn(Request $req)
