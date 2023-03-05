@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Session;
+
 class signUpController extends Controller
 {
     private $users = array();
@@ -28,9 +29,9 @@ class signUpController extends Controller
         ];
         $req->validate($rules, $messages);
 
-        Session::put($req -> userName);
-        Session::put(bcrypt($req -> password));
-      
+        Session::put($req->userName);
+        Session::put(bcrypt($req->password));
+
         return redirect()->route('sign.in');
     }
 }

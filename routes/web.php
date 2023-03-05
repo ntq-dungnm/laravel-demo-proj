@@ -29,29 +29,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('sign-in',[signInController::class,'getsignIn'])->name('sign.in');
-Route::post('sign-in',[signInController::class,'postSignIn']);
+Route::get('sign-in', [signInController::class, 'getsignIn'])->name('sign.in');
+Route::post('sign-in', [signInController::class, 'postSignIn']);
 
-Route::get('sign-up',[signUpController::class,'getSignUp']);
-Route::post('sign-up',[signUpController::class,'postSignUp']);
+Route::get('sign-up', [signUpController::class, 'getSignUp']);
+Route::post('sign-up', [signUpController::class, 'postSignUp']);
 
-Route::get('home-page',[homePageController::class,'getHomePage'])->name('home-page');
+Route::get('home-page', [homePageController::class, 'getHomePage'])->name('home-page');
 
-Route::get('product-details',[productDetailsController::class,'getProductDetails']);
+Route::get('product-details', [productDetailsController::class, 'getProductDetails']);
 
-Route::post('chooseColor',[productDetailsController::class,'chooseColor']);
-
-
-Route::get('shopping-cart',[shoppingCartController::class,'getShoppingCart']);
-
-Route::get('check-out',[checkOutController::class,'getCheckOut']);
+Route::post('chooseColor', [productDetailsController::class, 'chooseColor']);
 
 
-Route::get('product-handle',[productHandleController::class,'getProductHandle']);
+Route::get('shopping-cart', [shoppingCartController::class, 'getShoppingCart']);
+
+Route::get('check-out', [checkOutController::class, 'getCheckOut'])->name('check-out');
 
 
-Route::get('add-product',[addProductController::class,'getAddProduct']);
+Route::get('product-handle', [productHandleController::class, 'getProductHandle']);
 
-Route::get('order-handle',[orderHandleController::class,'getOrderHandle']);
 
-Route::get('order-details',[orderDetailsController::class,'getOrderDetails']);
+Route::get('add-product', [addProductController::class, 'getAddProduct']);
+
+Route::get('order-handle', [orderHandleController::class, 'getOrderHandle']);
+
+Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);

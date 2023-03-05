@@ -10,4 +10,5 @@ class orderDetailsController extends Controller
     public function getOrderDetails(){
         return view('admin.orderDetails');
     }
+    
 }

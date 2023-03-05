@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class addProductController extends Controller
 {
-    public function getAddProduct(){
+    public function getAddProduct()
+    {
         return view('admin.addProduct');
     }
+
 }

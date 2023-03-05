@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class productHandleController extends Controller
 {
     public function getProductHandle(){
-        return view('productHandle');
+        return view('admin.productHandle');
     } 
    
 }

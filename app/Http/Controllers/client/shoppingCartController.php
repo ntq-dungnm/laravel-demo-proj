@@ -12,4 +12,7 @@ class shoppingCartController extends Controller
     public function getShoppingCart(){
         return view('client.shoppingCart');
     }
+
+    
+
 }

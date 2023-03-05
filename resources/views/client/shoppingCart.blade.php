@@ -426,7 +426,7 @@
                                 </div>
                             </div>
 
-                            <a href="apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
+                            <a href="{{ route('check-out') }}" class="btn btn-success text-center w-100">
                                 Checkout
                             </a>
                         </div>
@@ -894,7 +894,7 @@
                                                     <a href="apps-ecommerce-cart.html" class="nav-link" data-key="t-shopping-cart"> Shopping Cart </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="apps-ecommerce-checkout.html" class="nav-link" data-key="t-checkout"> Checkout </a>
+                                                    <a href="{{ route('check-out') }}" class="nav-link" data-key="t-checkout"> Checkout </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="apps-ecommerce-sellers.html" class="nav-link" data-key="t-sellers">
@@ -2028,7 +2028,7 @@
 
 
                             <div class="text-end mb-4">
-                                <a href="apps-ecommerce-checkout.html" class="btn btn-primary btn-label right ms-auto"><i class="ri-arrow-right-line label-icon align-bottom fs-16 ms-2"></i> Checkout</a>
+                                <a href="{{ route('check-out') }}" class="btn btn-primary btn-label right ms-auto"><i class="ri-arrow-right-line label-icon align-bottom fs-16 ms-2"></i> Checkout</a>
                             </div>
                         </div>
                         <!-- end col -->
