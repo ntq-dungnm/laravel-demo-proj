@@ -22,6 +22,7 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 </head>
 
@@ -2208,9 +2209,9 @@
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark">Sweatshirt for Men (Pink)</a></h5>
-                                                        <p class="text-muted mb-0">$ 119.99 x 2</p>
+                                                        <p class="text-muted mb-0">$ {{ $allProduct[0]['price'] }} x {{ $allProduct[0]['quantity'] }}</p>
                                                     </td>
-                                                    <td class="text-end">$ 239.98</td>
+                                                    <td class="text-end">${{ $allProduct[0]['price'] * $allProduct[0]['quantity']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -2220,9 +2221,10 @@
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark">Noise Evolve Smartwatch</a></h5>
-                                                        <p class="text-muted mb-0">$ 94.99 x 1</p>
+                                                        <p class="text-muted mb-0">${{ $allProduct[1]['price'] }} x {{ $allProduct[1]['quantity'] }}</p>
                                                     </td>
-                                                    <td class="text-end">$ 94.99</td>
+                                                    <td class="text-end">${{ $allProduct[1]['price'] * $allProduct[1]['quantity']}}</td>
+                                                </tr></td>
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -2232,13 +2234,14 @@
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark">350 ml Glass Grocery Container</a></h5>
-                                                        <p class="text-muted mb-0">$ 24.99 x 1</p>
+                                                        <p class="text-muted mb-0">${{ $allProduct[2]['price'] }} x {{ $allProduct[2]['quantity'] }}</p>
                                                     </td>
-                                                    <td class="text-end">$ 24.99</td>
+                                                    <td class="text-end">${{ $allProduct[2]['price'] * $allProduct[2]['quantity']}}</td>
+                                                </tr></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="fw-semibold" colspan="2">Sub Total :</td>
-                                                    <td class="fw-semibold text-end">$ 359.96</td>
+                                                    <td class="fw-semibold text-end">${{ $allProduct[0]['price'] * $allProduct[0]['quantity'] + $allProduct[1]['price'] * $allProduct[1]['quantity'] +  $allProduct[2]['price'] * $allProduct[2]['quantity']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">Discount <span class="text-muted">(VELZON15)</span> : </td>
@@ -2256,7 +2259,7 @@
                                                     <th colspan="2">Total (USD) :</th>
                                                     <td class="text-end">
                                                         <span class="fw-semibold">
-                                                            $353.15
+                                                            ${{ $allProduct[0]['price'] * $allProduct[0]['quantity'] + $allProduct[1]['price'] * $allProduct[1]['quantity'] +  $allProduct[2]['price'] * $allProduct[2]['quantity'] - 50 +24.99 +18.20}}
                                                         </span>
                                                     </td>
                                                 </tr>

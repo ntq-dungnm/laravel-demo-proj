@@ -55,3 +55,5 @@ Route::get('add-product', [addProductController::class, 'getAddProduct']);
 Route::get('order-handle', [orderHandleController::class, 'getOrderHandle']);
 
 Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);
+
+Route::post('update-product', [shoppingCartController::class, 'handleProduct']);
