@@ -1991,7 +1991,7 @@
                                             <div class="input-step">
                                                 <button type="button" class="minus decrease" data-id="stuff">–</button>
                                                 <input type="number" class="product-quantity" value="1" min="0" max="100">
-                                                <button type="button" class="plus" data-id="stuff>+</button>
+                                                <button type="button" class="plus" data-id="stuff" >+</button>
                                             </div>
                                         </div>
                                         <div class="col-sm-auto">

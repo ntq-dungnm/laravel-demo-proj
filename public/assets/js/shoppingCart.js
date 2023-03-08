@@ -1,4 +1,3 @@
-
 var $ = jQuery;
 var products = [
     {
