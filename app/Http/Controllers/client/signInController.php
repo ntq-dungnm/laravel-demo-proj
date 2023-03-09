@@ -25,7 +25,7 @@ class signInController extends Controller
         ];
 
         $messages = [
-            'required' => 'This field is required',
+            'required' => 'This field ais required',
         ];
 
         $req->validate($rules, $messages);
