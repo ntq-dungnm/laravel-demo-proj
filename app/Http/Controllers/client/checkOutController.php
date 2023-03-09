@@ -33,14 +33,14 @@ class checkOutController extends Controller
 
             ]
         ];
-        // $allProduct = !(Session::get('product')) ? Session::put('product', $products) : Session::get('product');
-       
-        if(!(Session::get('product'))){
+        // $allProduct = !(Session::get('product')) ? Sezsion::put('product', $products) : Session::get('product');
+
+        if (!(Session::get('product'))) {
             $allProduct = Session::put('product', $products);
-        }else{
-            $allProduct=  Session::get('product');
+        } else {
+            $allProduct =  Session::get('product');
         }
-        
+
         return view('client.checkOut', compact('allProduct'));
     }
 }

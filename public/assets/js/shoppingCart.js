@@ -37,6 +37,7 @@ $('.plus').click(function (productName) {
     productName = $(this).data('id');
     products.find(p => p.name == productName).quantity++;
     updateProduct(products);
+;
 });
 
 

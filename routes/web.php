@@ -41,14 +41,11 @@ Route::get('product-details', [productDetailsController::class, 'getProductDetai
 
 Route::post('chooseColor', [productDetailsController::class, 'chooseColor']);
 
-
 Route::get('shopping-cart', [shoppingCartController::class, 'getShoppingCart']);
 
 Route::get('check-out', [checkOutController::class, 'getCheckOut'])->name('check-out');
 
-
 Route::get('product-handle', [productHandleController::class, 'getProductHandle']);
-
 
 Route::get('add-product', [addProductController::class, 'getAddProduct']);
 
