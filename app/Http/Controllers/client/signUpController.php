@@ -11,13 +11,7 @@ use Session;
 
 class signUpController extends Controller
 {
-    // private $users = array();
-
-    // public function __construct(UserRepository $userRepository)
-    // {
-    //     $this->userRepository = $userRepository;
-    // }
-
+   
     public function getSignUp()
     {
         return view('client.signUp');
@@ -41,9 +35,7 @@ class signUpController extends Controller
         $password = bcrypt($req->password);
 
         $user = [
-            'fullName' => $fullName
-            , 'email' => $email
-            , 'password' => $password
+            'fullName' => $fullName, 'email' => $email, 'password' => $password
         ];
 
         RepositoryUserRepository::create($user);

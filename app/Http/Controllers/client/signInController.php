@@ -25,7 +25,7 @@ class signInController extends Controller
         ];
 
         $messages = [
-            'required' => 'This field ais required',
+            'required' => 'This field is required',
         ];
 
         $req->validate($rules, $messages);
@@ -36,8 +36,10 @@ class signInController extends Controller
             'password' => $req->password,
         ];
 
-        if (Auth::attempt($user)) {
+        if (Auth::guard('users')->attempt($user)) {
             return redirect()->route('home-page');
+        } elseif (Auth::guard('admins')->attempt($user)) {
+            return redirect()->route('product-handle');
         } else {
             return redirect()->back();
         }

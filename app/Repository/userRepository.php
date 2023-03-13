@@ -22,7 +22,7 @@ class userRepository implements BaseRepository
             ->get();
     }
 
-    public function getAll()
+    public static function getAll()
     {
         return DB::table('users')
             ->get();
@@ -46,6 +46,11 @@ class userRepository implements BaseRepository
     }
 
     public function edit($id)
+    {
+        return null;
+    }
+    
+    public static function getByName($name)
     {
         return null;
     }
