@@ -7,7 +7,7 @@ use PDO;
 use DB;
 use Illuminate\Support\Carbon;
 use App\Models\Product as Product;
-use App\Models\AttributesValue;
+use App\Models\AttributeValue;
 
 class ProductRepository implements BaseRepository
 {
@@ -33,9 +33,12 @@ class ProductRepository implements BaseRepository
     public static function create($product)
     {
         $newProduct =  Product::create([
-            'name' => $product['product_title'],
-            // 'img' => $product['img'],
+            'title' => $product['title'],
             'category_id' => $product['category_id'],
+            'slug' => $product['slug'],
+            // 'description' => $product['description'],
+            // 'total_stocks' => $product['stocks'],
+            'status' => $product['status'],
         ]);
         return $newProduct;
     }

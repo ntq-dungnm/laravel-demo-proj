@@ -6,16 +6,21 @@ use App\Repository\BaseRepository;
 use PDO;
 use DB;
 use Illuminate\Support\Carbon;
-use App\Models\Category;
+use  App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoriesRepository implements BaseRepository
 {
-    
+    // protected $categoriesRepository;
+
+    // public function __construct(UserRepository $categoriesRepository)
+    // {
+    //     $this->categoriesRepository = $categoriesRepository;
+    // }
 
     public function getById($id)
     {
-        return DB::table('categories')
-            ->where('id', $id)
+        return Category::where('id', $id)
             ->get();
     }
 
@@ -24,18 +29,13 @@ class CategoriesRepository implements BaseRepository
         return Category::all();
     }
 
-    public static function create($product)
+    public static function create($category)
     {
-        // DB::table('product')->insert(
-        //     [
-        //         'name' => $product['name'],
-        //         'img' => $product['img'],
-        //         'category_id' => $product['category_id'],
-        //         'created_at' => Carbon::now(),
-        //         'manufacturer_name' => $product['manufacturer_name'],
-        //         'manufacturer_brand' => $product['manufacturer_brand'],
-        //     ]
-        // );
+       $hehe = Category::create([
+            'title' => $category['category_title'],
+            'created_at'=>Carbon::now(),
+        ]);
+        return $hehe;
     }
 
     public function delete($id)
@@ -51,6 +51,5 @@ class CategoriesRepository implements BaseRepository
 
     public static function getByName($name)
     {
-        return null;
     }
 }

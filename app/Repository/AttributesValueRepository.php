@@ -6,51 +6,18 @@ use App\Repository\BaseRepository;
 use PDO;
 use DB;
 use Illuminate\Support\Carbon;
-use  App\Models\Attribute;
+use  App\Models\AttributeProductVariable;
 use App\Model\Product;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\AttributesValue;
+use App\Models\AttributeValue;
 
-class AttributesRepository implements BaseRepository
+class AttributesValueRepository
 {
-    // protected $categoriesRepository;
-
-    // public function __construct(UserRepository $categoriesRepository)
-    // {
-    //     $this->categoriesRepository = $categoriesRepository;
-    // }
-
-    public function getById($id)
+    public function create($attribute_id, $value)
     {
-        return Attribute::where('id', $id)
-            ->get();
-    }
-
-    public static function getAll()
-    {
-        return Attribute::all();
-        // dd(Attribute::all());
-    }
-
-    public static function create($product)
-    {
-        Attribute::create([
-            'product_id' => $product['id'],
+        AttributeValue::create([
+            'attribute_id' => $attribute_id,
+            'value' => $value,
         ]);
-    }
-
-    public function delete($id)
-    {
-        DB::table('users')->delete()
-            ->where('id', $id);
-    }
-
-    public function edit($id)
-    {
-        return null;
-    }
-
-    public static function getByName($name)
-    {
     }
 }

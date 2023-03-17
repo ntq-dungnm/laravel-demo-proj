@@ -8,6 +8,7 @@ use App\Http\Controllers\client\shoppingCartController;
 use App\Http\Controllers\client\checkOutController;
 use App\Http\Controllers\admin\productHandleController;
 use App\Http\Controllers\admin\addProductController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\orderHandleController;
 use App\Http\Controllers\admin\orderDetailsController;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +55,6 @@ Route::get('check-out', [checkOutController::class, 'getCheckOut'])->name('check
     Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);
 
     Route::post('update-product', [shoppingCartController::class, 'handleProduct']);
+
+    Route::get('add-category',[CategoryController::class,'getCategory']);
+    Route::post('add-category',[CategoryController::class,'addCategory']);
