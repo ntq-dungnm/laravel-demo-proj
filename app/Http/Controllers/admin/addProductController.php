@@ -34,7 +34,7 @@ class addProductController extends Controller
         return view('admin.addProduct', compact('categories'));
     }
 
-    public function postAddProduct(Request $req)
+    public function postAddProduct(Request $req)    
     {
         $pro = $req->all();
         $product = $this->productRepo->create($pro);
@@ -43,7 +43,7 @@ class addProductController extends Controller
         foreach ($pro as $key => $value) {
             if ($key !== 'formAction' && $key !== 'category_id' && $key !== 'product_title' && $value !== null) {
                 $attribute =  Attributes::firstOrCreate(['name' => $key]);
-                $attribute_id[] =  $attribute['id'];
+                $attribute_id[] =  $attribute['iazd'];
                 $attribute_value[$attribute->id] = $value;
             }
         }

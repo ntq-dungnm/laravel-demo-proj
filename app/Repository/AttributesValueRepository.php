@@ -35,8 +35,7 @@ class AttributesRepository implements BaseRepository
     public static function create($product)
     {
         Attribute::create([
-            'product_id'=>$product['id'],
-            ''
+            'product_id' => $product['id'],
         ]);
     }
 
@@ -53,6 +52,5 @@ class AttributesRepository implements BaseRepository
 
     public static function getByName($name)
     {
-        
     }
 }
