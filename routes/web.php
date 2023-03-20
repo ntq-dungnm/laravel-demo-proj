@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\orderHandleController;
 use App\Http\Controllers\admin\orderDetailsController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\admin\ProductVariablesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,16 +46,18 @@ Route::get('shopping-cart', [shoppingCartController::class, 'getShoppingCart']);
 Route::get('check-out', [checkOutController::class, 'getCheckOut'])->name('check-out');
 
 
-    Route::get('product-handle', [productHandleController::class, 'getProductHandle'])->name('product-handle');
+Route::get('product-handle', [productHandleController::class, 'getProductHandle'])->name('product-handle');
 
-    Route::get('add-product', [addProductController::class, 'getAddProduct']);
-    Route::post('add-product', [addProductController::class, 'postAddProduct']);
+Route::get('add-product', [addProductController::class, 'show']);
+Route::post('add-product', [addProductController::class, 'store']);
 
-    Route::get('order-handle', [orderHandleController::class, 'getOrderHandle']);
+Route::get('order-handle', [orderHandleController::class, 'getOrderHandle']);
 
-    Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);
+Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);
 
-    Route::post('update-product', [shoppingCartController::class, 'handleProduct']);
+Route::post('update-product', [shoppingCartController::class, 'handleProduct']);
 
-    Route::get('add-category',[CategoryController::class,'getCategory']);
-    Route::post('add-category',[CategoryController::class,'addCategory']);
+Route::get('add-category', [CategoryController::class, 'getCategory']);
+Route::post('add-category', [CategoryController::class, 'addCategory']);
+
+Route::get('product-variables', [ProductVariablesController::class, 'show'])->name('product-variables');

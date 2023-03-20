@@ -11,12 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoriesRepository implements BaseRepository
 {
-    // protected $categoriesRepository;
 
-    // public function __construct(UserRepository $categoriesRepository)
-    // {
-    //     $this->categoriesRepository = $categoriesRepository;
-    // }
 
     public function getById($id)
     {
@@ -31,9 +26,9 @@ class CategoriesRepository implements BaseRepository
 
     public static function create($category)
     {
-       $hehe = Category::create([
+        $hehe = Category::create([
             'title' => $category['category_title'],
-            'created_at'=>Carbon::now(),
+            'created_at' => Carbon::now(),
         ]);
         return $hehe;
     }

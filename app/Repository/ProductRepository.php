@@ -11,11 +11,7 @@ use App\Models\AttributeValue;
 
 class ProductRepository implements BaseRepository
 {
-    // protected $productRepository;
-    // public function __construct(UserRepository $productRepository )
-    // {
-    //     $this->productRepository = $productRepository;
-    // }
+  
 
     public function getById($id)
     {

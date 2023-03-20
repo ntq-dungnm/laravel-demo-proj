@@ -184,7 +184,6 @@
                                                 aria-label="Recipient's username">
                                             <button class="btn btn-primary" type="submit"><i
                                                     class="mdi mdi-magnify"></i></button>
-
                                         </div>
                                     </div>
                                 </form>
@@ -2283,20 +2282,15 @@
                                             <label class="form-label" for="product-title-input">Product
                                                 Title</label>
                                             <input type="hidden" class="form-control" id="formAction"
-                                                name="formAction" value="add" >
+                                                name="formAction" value="add">
                                             <input type="text" class="form-control d-none"
                                                 id="product-id-input">
                                             <input type="text" class="form-control" id="product-title-input"
-                                                value="" placeholder="Enter product title" name="title">
+                                                value="" placeholder="Enter product title"
+                                                name="title">
                                             <div class="invalid-feedback">Please Enter a product title.</div>
                                         </div>
-                                        <div>
-                                            <label>Product Description</label>
-
-                                            <input id="ckeditor-classic" name="descriptions">
-
-                                            </input>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                                 <!-- end card -->
@@ -2399,7 +2393,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" data-bs-toggle="tab"
                                                     href="#addproduct-metadata" role="tab">
-                                                    Meta Data
+                                                    Details
                                                 </a>
                                             </li>
                                         </ul>
@@ -2409,30 +2403,7 @@
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="addproduct-general-info"
                                                 role="tabpanel">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="manufacturer-name-input">Manufacturer
-                                                                Name</label>
-                                                            <input type="text" class="form-control"
-                                                                id="manufacturer-name-input"
-                                                                placeholder="Enter manufacturer name"
-                                                                name="manufacturer_name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="manufacturer-brand-input">Manufacturer
-                                                                Brand</label>
-                                                            <input type="text" class="form-control"
-                                                                id="manufacturer-brand-input"
-                                                                placeholder="Enter manufacturer brand"
-                                                                name="manufacturer_brand">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                                 <!-- end row -->
 
                                                 <div class="row">
@@ -2502,10 +2473,9 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label class="form-label" for="meta-title-input">Meta
-                                                                title</label>
+                                                            <label class="form-label" for="meta-title-input">Product Color</label>
                                                             <input type="text" class="form-control"
-                                                                placeholder="Enter meta title"
+                                                                placeholder="Enter product's color"
                                                                 id="meta-title-input">
                                                         </div>
                                                     </div>
@@ -2513,10 +2483,10 @@
 
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label class="form-label" for="meta-keywords-input">Meta
-                                                                Keywords</label>
+                                                            <label class="form-label" for="meta-keywords-input">Product Size
+                                                                </label>
                                                             <input type="text" class="form-control"
-                                                                placeholder="Enter meta keywords"
+                                                                placeholder="Enter product's size"
                                                                 id="meta-keywords-input">
                                                         </div>
                                                     </div>
@@ -2524,11 +2494,11 @@
                                                 </div>
                                                 <!-- end row -->
 
-                                                <div>
+                                                <!-- <div>
                                                     <label class="form-label" for="meta-description-input">Meta
                                                         Description</label>
                                                     <textarea class="form-control" id="meta-description-input" placeholder="Enter meta description" rows="3"></textarea>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <!-- end tab pane -->
                                         </div>
@@ -2538,7 +2508,7 @@
                                 </div>
                                 <!-- end card -->
                                 <div class="text-end mb-3">
-
+                                    <button type="submit" class="btn btn-primary w-sm">Submit</button>
                                 </div>
                             </div>
                             <!-- end col -->
@@ -2600,8 +2570,8 @@
                                         <p class="text-muted mb-2"> <a href="#"
                                                 class="float-end text-decoration-underline">Add
                                                 New</a>Select product category</p>
-                                        <select class="form-select" id="choices-category-input" data-choices
-                                            data-choices-search-false name="category_id">
+                                        <select class="form-select" id="choices-category-input"
+                                             data-choices data-choices-search-false name="category_id">
                                             @foreach ($allCategories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                                             @endforeach
@@ -2645,138 +2615,6 @@
                                     </div>
                                     <!-- end card body -->
                                 </div>
-
-
-                                <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
-
-                                    <!-- end row -->
-
-
-                                    <!-- end row -->
-                                </div>
-                                <div class="product-container">
-                                    <div class="card productVariable">
-
-                                        <div class="card-header">
-                                            <h5 class="card-title mb-0">Product Variables</h5>
-                                        </div>
-
-                                        <div class="card-body">
-                                            <div class="mb-4">
-                                                <h5 class="fs-14 mb-1">Product Image</h5>
-                                                <p class="text-muted">Add Product main Image.</p>
-                                                <div class="text-center">
-                                                    <div class="position-relative d-inline-block">
-                                                        <div
-                                                            class="position-absolute top-100 start-100 translate-middle">
-                                                            <label for="product-image-input" class="mb-0"
-                                                                data-bs-toggle="tooltip" data-bs-placement="right"
-                                                                title="Select Image">
-                                                                <div class="avatar-xs">
-                                                                    <div
-                                                                        class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                                        <i class="ri-image-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </label>
-                                                            <input class="form-control d-none" value=""
-                                                                id="product-image-input" type="file"
-                                                                accept="image/png, image/gif, image/jpeg">
-                                                        </div>
-                                                        <div class="avatar-lg">
-                                                            <div class="avatar-title bg-light rounded">
-                                                                <img src="" id="product-img"
-                                                                    class="avatar-md h-auto" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="stocks-input">Stocks</label>
-                                                    <input type="text" class="form-control" id="stocks-input"
-                                                        placeholder="Stocks" name="variable_stock" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        stocks.</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label"
-                                                        for="product-price-input">Price</label>
-                                                    <div class="input-group has-validation mb-3">
-                                                        <span class="input-group-text"
-                                                            id="product-price-addon">$</span>
-                                                        <input type="text" class="form-control"
-                                                            id="product-price-input" placeholder="Price"
-                                                            aria-label="Price"
-                                                            aria-describedby="product-price-addon"
-                                                            name="variable_price" required>
-                                                        <div class="invalid-feedback">Please Enter a product
-                                                            price.</div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label"
-                                                        for="product-discount-input">Discount</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text"
-                                                            id="product-discount-addon">%</span>
-                                                        <input type="text" class="form-control"
-                                                            id="product-discount-input"
-                                                            placeholder="variable_discount" aria-label="discount"
-                                                            aria-describedby="product-discount-addon"
-                                                            name="variable_discount">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="orders-input">Orders</label>
-                                                    <input type="text" class="form-control" id="orders-input"
-                                                        placeholder="Orders" name="variable_orders" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        orders.</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="orders-input">Color</label>
-                                                    <input type="text" class="form-control" id="orders-input"
-                                                        placeholder="Color" name="variable_color" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        orders.</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="orders-input">Size</label>
-                                                    <input type="text" class="form-control" id="orders-input"
-                                                        placeholder="Size" name="variable_size" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        orders.</div>
-                                                </div>
-                                            </div>
-                                            <!-- end col -->
-
-                                        </div>
-                                        <button data-dz-remove
-                                            class="btn btn-sm btn-danger delete-variable">Delete</button>
-                                    </div>
-
-                                </div>
-                                <button type="button" id="add-section-btn" class="btn btn-primary w-sm">Create
-                                    Product Variables</button>
-                                <button type="submit" class="btn btn-primary w-sm">Submit</button>
-
                                 <!-- end card -->
 
                             </div>
@@ -3575,8 +3413,6 @@
     <!-- App js -->
     <script src="assets/js/addProduct.js"></script>
     <script src="assets/js/app.js"></script>
-
-
 </body>
 
 </html>
