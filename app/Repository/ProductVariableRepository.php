@@ -3,10 +3,6 @@
 namespace App\Repository;
 
 use App\Repository\BaseRepository;
-use PDO;
-use DB;
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductVariable;
 
 class ProductVariableRepository implements BaseRepository
@@ -23,6 +19,10 @@ class ProductVariableRepository implements BaseRepository
 
     public static function create($product)
     {
+        return  ProductVariable::create([
+            'product_id' => $product['product_id'],
+            'regular_price' => $product['price'],
+        ]);
     }
 
     public function delete($id)

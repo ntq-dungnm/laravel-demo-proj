@@ -38,6 +38,8 @@ $('#createproduct-form').submit(function (e) {
     formData.delete('variable_orders');
     formData.delete('variable_color');
     formData.delete('variable_size');
+    formData.delete('variable_discount');
+
     JSON.stringify(formData);
     
     for (var i = 0; i < variations.length; i++) {

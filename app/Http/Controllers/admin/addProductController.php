@@ -36,7 +36,9 @@ class addProductController extends Controller
                 $variations[$key] = json_decode($value, true);
             }
         }
-        $product['variables'] = $variations;
-        $this->productService->addProduct($product);
+        // $product['variables'] = $variations;
+        // dd($product,$variations);
+
+        $this->productService->addProduct($product,$variations); 
     }
 }

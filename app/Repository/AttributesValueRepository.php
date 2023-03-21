@@ -15,7 +15,7 @@ class AttributesValueRepository
 {
     public function create($attribute_id, $value)
     {
-        AttributeValue::create([
+       return  AttributeValue::create([
             'attribute_id' => $attribute_id,
             'value' => $value,
         ]);
