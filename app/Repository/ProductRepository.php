@@ -3,15 +3,12 @@
 namespace App\Repository;
 
 use App\Repository\BaseRepository;
-use PDO;
 use DB;
-use Illuminate\Support\Carbon;
 use App\Models\Product as Product;
-use App\Models\AttributeValue;
 
 class ProductRepository implements BaseRepository
 {
-  
+
 
     public function getById($id)
     {
@@ -22,18 +19,21 @@ class ProductRepository implements BaseRepository
 
     public static function getAll()
     {
-        return DB::table('product')
+        return Product::join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('product_variables', 'product_variables.product_id', '=', 'products.id')
+            ->select('products.*', 'categories.title as category_title', DB::raw('CONCAT( MIN(product_variables.regular_price)," -    ","   ","$", MAX(product_variables.regular_price)) as price_range'))
+            ->groupBy('products.id')
             ->get();
     }
 
-    public static function create($product)
+    public static function create(array $product)
     {
         $newProduct =  Product::create([
             'title' => $product['title'],
             'category_id' => $product['category_id'],
-            'slug' => $product['slug'],
-            // 'description' => $product['description'],
-            // 'total_stocks' => $product['stocks'],
+            'slug' => 'product-' . str_replace(' ', '-', strtolower($product['title'])),
+            'description' => $product['descriptions'],
+            'total_stocks' => $product['stocks'],
             'status' => $product['status'],
         ]);
         return $newProduct;

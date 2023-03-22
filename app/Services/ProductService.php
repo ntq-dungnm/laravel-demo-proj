@@ -57,11 +57,12 @@ class ProductService
             'orders' => $product['orders'],
         ];
 
-
+        //create product
         $thisProduct =  $this->productRepo->create($pro);
 
         $attribute_value = [];
 
+        //create all attributes for product
         foreach ($attribute as $key => $val) {
             $allAttributes =  Attribute::firstOrCreate(['name' => $key]);
 
@@ -103,6 +104,7 @@ class ProductService
             $this->attributeProductVariableRepository->create($productVaribales);
 
             $productVaribales = null;
+
             $attributeValueIds = null;
         };
 

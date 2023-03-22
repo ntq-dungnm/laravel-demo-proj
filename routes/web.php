@@ -57,7 +57,7 @@ Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);
 
 Route::post('update-product', [shoppingCartController::class, 'handleProduct']);
 
-Route::get('add-category', [CategoryController::class, 'getCategory']);
-Route::post('add-category', [CategoryController::class, 'addCategory']);
+Route::get('add-category', [CategoryController::class, 'show'])->name('add-category');
+Route::post('add-category', [CategoryController::class, 'store']);
 
 Route::get('product-variables', [ProductVariablesController::class, 'show'])->name('product-variables');

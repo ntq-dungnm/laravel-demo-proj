@@ -26,11 +26,11 @@ class CategoriesRepository implements BaseRepository
 
     public static function create($category)
     {
-        $hehe = Category::create([
-            'title' => $category['category_title'],
-            'created_at' => Carbon::now(),
+        Category::create([
+            'title' => $category['title'],
+            'description' => $category['description'],
+            'slug' => 'category-' . str_replace(' ', '-', strtolower($category['title'])),
         ]);
-        return $hehe;
     }
 
     public function delete($id)

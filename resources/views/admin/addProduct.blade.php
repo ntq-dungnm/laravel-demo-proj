@@ -2283,7 +2283,7 @@
                                             <label class="form-label" for="product-title-input">Product
                                                 Title</label>
                                             <input type="hidden" class="form-control" id="formAction"
-                                                name="formAction" value="add" >
+                                                name="formAction" value="add">
                                             <input type="text" class="form-control d-none"
                                                 id="product-id-input">
                                             <input type="text" class="form-control" id="product-title-input"
@@ -2293,7 +2293,8 @@
                                         <div>
                                             <label>Product Description</label>
 
-                                            <input id="ckeditor-classic" name="descriptions">
+                                            <input type="text" class="form-control"
+                                                placeholder="Enter Product Description" name="descriptions">
 
                                             </input>
                                         </div>
@@ -2323,8 +2324,8 @@
                                                             </div>
                                                         </label>
                                                         <input class="form-control d-none" value=""
-                                                            id="product-image-input" type="file"
-                                                            accept="image/png, image/gif, image/jpeg">
+                                                            id="product-image-input" type="file" name="img"
+                                                            accept="image/*">
                                                     </div>
                                                     <div class="avatar-lg">
                                                         <div class="avatar-title bg-light rounded">
@@ -2597,7 +2598,7 @@
                                         <h5 class="card-title mb-0">Product Categories</h5>
                                     </div>
                                     <div class="card-body">
-                                        <p class="text-muted mb-2"> <a href="#"
+                                        <p class="text-muted mb-2"> <a href="{{ route('add-category') }}"
                                                 class="float-end text-decoration-underline">Add
                                                 New</a>Select product category</p>
                                         <select class="form-select" id="choices-category-input" data-choices
@@ -2605,14 +2606,7 @@
                                             @foreach ($allCategories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                                             @endforeach
-                                            {{-- <option value="1">Appliances</option>
-                                            <option value="2">Automotive Accessories</option>
-                                            <option value="3">Electronics</option>
-                                            <option value="4">Fashion</option>
-                                            <option value="5">Furniture</option>
-                                            <option value="6">Grocery</option>
-                                            <option value="7">Kids</option>
-                                            <option value="8">Watches</option> --}}
+
                                         </select>
                                     </div>
                                     <!-- end card body -->
@@ -2634,17 +2628,6 @@
                                     <!-- end card body -->
                                 </div> --}}
                                 <!-- end card -->
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">Product Slug</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        {{-- <p class="text-muted mb-2">Add short description for product</p> --}}
-                                        <textarea class="form-control" placeholder="" rows="3" name="slug"></textarea>
-                                    </div>
-                                    <!-- end card body -->
-                                </div>
 
 
                                 <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
@@ -2679,13 +2662,13 @@
                                                                     </div>
                                                                 </div>
                                                             </label>
-                                                            <input class="form-control d-none" value=""
-                                                                id="product-image-input" type="file"
-                                                                accept="image/png, image/gif, image/jpeg">
+                                                            <input value="" id="variable-product-image-input"
+                                                                type="file" name="variable_img"
+                                                                accept="image/*">
                                                         </div>
                                                         <div class="avatar-lg">
-                                                            <div class="avatar-title bg-light rounded">
-                                                                <img src="" id="product-img"
+                                                            <div>
+                                                                <img id="product-variable-img"
                                                                     class="avatar-md h-auto" />
                                                             </div>
                                                         </div>

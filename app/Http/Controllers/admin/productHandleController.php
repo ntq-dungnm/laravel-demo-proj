@@ -4,14 +4,20 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\ProductsHandleService;
 
 class productHandleController extends Controller
 {
-    public function getProductHandle()
+    private $productsHandleService;
+
+    public function __construct(ProductsHandleService $productsHandleService)
     {
-        return view('admin.productHandle');
+        $this->productsHandleService = $productsHandleService;
     }
 
-
-   
+    public function getProductHandle()
+    {
+        $allProducts = $this->productsHandleService->getAllProducts();
+        return view('admin.productHandle', ['allProducts' => $allProducts]);
+    }
 }
