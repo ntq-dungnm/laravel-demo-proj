@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('tax');
             $table->integer('order_counts');
             $table->timestamps();
+            $table->text('image');
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });

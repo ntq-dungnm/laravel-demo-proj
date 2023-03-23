@@ -13,13 +13,16 @@ $('#createproduct-form').submit(function (e) {
             console.log(data);
         },
 
-       
+
         error: function (jqXHR) {
             $.each(jqXHR.responseJSON.errors, function (key, value) {
-                console.log(key,value);
-                $("#"+"category_" + key + "_error").text(value[0]);
+                console.log(key, value);
+                $("#" + "category_" + key + "_error").text(value[0]);
             })
         }
     });
 })
+
+
+
 

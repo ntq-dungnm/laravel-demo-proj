@@ -11,6 +11,8 @@ use App\Repository\ProductVariableRepository;
 use App\Repository\AttributeProductVariableRepository;
 use GuzzleHttp\Psr7\Request;
 use App\Models\Attribute;
+use SplFileInfo;
+use Illuminate\Http\UploadedFile;
 
 class ProductService
 {
@@ -39,16 +41,29 @@ class ProductService
 
     public function addProduct(array $product, array $variation)
     {
+        // dd($variation);
+
+        // $proIMG = [];
+        // foreach ($variation as $key => $value) {
+        //     foreach ($value as $img => $k) {
+        //         if (strcmp($img, 'variable_img') == 0) {
+        //             array_push($proIMG, $k);
+        //         }
+        //     }
+        // };
+
+        // dd($proIMG);
+// dd($product);
         $pro = [
             'title' => $product['title'],
             'description' => $product['descriptions'],
             'category_id' => $product['category_id'],
             'status' => $product['status'],
-            'slug'  => $product['slug'],
+            'img'   => $product['img'],
+            'stock' =>$product['stocks'],
             'manufacturer_name' => $product['manufacturer_name'],
             'manufacturer_brand' => $product['manufacturer_brand'],
         ];
-
 
         $attribute = [
             'price' => $product['price'],
@@ -71,6 +86,9 @@ class ProductService
             $attribute_value[$allAttributes->id] = $val;
         }
 
+
+
+        //create attribute value
         foreach ($attribute_value as $key => $value) {
             $this->attributeValuesRepo->create($key, $value);
         };
@@ -78,6 +96,13 @@ class ProductService
 
         $productVariations = [];
 
+
+        // foreach($variation['img'] as $img){
+
+        // }
+
+        //insert into 
+        $hehe =[];
         foreach ($variation as $key => $value) {
             $productVariations['product_id'] = $thisProduct['id'];
 
@@ -94,13 +119,23 @@ class ProductService
                 $newAttributeValue = $this->attributeValuesRepo->create($variationAttributes->id, $val);
 
                 $attributeValueIds[] = $newAttributeValue['id'];
-            }
 
+                if (strcmp($attribute[''], 'variable_img') == 0) {
+                    // $url = new getClientOriginalName ($val);
+                    dd($url);
+                    $path = cloudinary()->upload($url->getRealPath());
+                    dd($path);
+                    $val = $url->getRealPath();
+                    array_push($hehe,$val);
+                    // dd($val);
+                }
+            }
+            
             $productVaribales = [
                 'product_variable_id' => $productVariableId,
                 'attribute_value_id' => $attributeValueIds,
             ];
-
+            dd($hehe);
             $this->attributeProductVariableRepository->create($productVaribales);
 
             $productVaribales = null;

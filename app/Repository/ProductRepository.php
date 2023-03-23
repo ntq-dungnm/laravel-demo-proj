@@ -32,8 +32,8 @@ class ProductRepository implements BaseRepository
             'title' => $product['title'],
             'category_id' => $product['category_id'],
             'slug' => 'product-' . str_replace(' ', '-', strtolower($product['title'])),
-            'description' => $product['descriptions'],
-            'total_stocks' => $product['stocks'],
+            'description' => $product['description'],
+            'total_stocks' => $product['stock'],
             'status' => $product['status'],
         ]);
         return $newProduct;

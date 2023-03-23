@@ -30,12 +30,14 @@ class addProductController extends Controller
     public function store(Request $req)
     {
         $product = $req->all();
+        dd($product);
         foreach ($product as $key => $value) {
             if (strpos($key, 'variations_') !== false) {
                 unset($product[$key]);
                 $variations[$key] = json_decode($value, true);
             }
         }
+        dd($variations);
         $this->productService->addProduct($product, $variations);
     }
 }

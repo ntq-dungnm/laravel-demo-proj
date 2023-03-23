@@ -1,22 +1,22 @@
 const $ = jQuery;
 
-$('#variable-product-image-input').on('change', function () {
-    var file = $(this).prop('files')[0];
-    console.log(file);
-    var reader = new FileReader();
-    reader.onload = function () {
-        var dataURL = reader.result;
-        $('#product-variable-img').attr('src', dataURL);
-    };
-    reader.readAsDataURL(file); 
-});
+// $('#variable-product-image-input').on('change', function () {
+//     var file = $(this).prop('files')[0];
+//     console.log(file);
+//     var reader = new FileReader();
+//     reader.onload = function () {
+//         var dataURL = reader.result;
+//         $('#product-variable-img').attr('src', dataURL);
+//     };
+//     reader.readAsDataURL(file); 
+// });  
 
 
 
 
 $(document).ready(function () {
     $('#add-section-btn').click(function () {
-        const newSection = $('.productVariable').first().clone(true);
+        const newSection = $('.productVariable').first().clone(false);
 
         newSection.find('input').val('');
 
@@ -35,18 +35,23 @@ $('#createproduct-form').submit(function (e) {
     var formData = new FormData(this);
     var variations = [];
 
+
+
     if ($('.productVariable').length) {
         var index = 0;
         $('.productVariable').each(function () {
             var variation = {};
             $(this).find('input').each(function () {
-                variation[$(this).attr('name')] = $(this).val();
+                if ($(this).attr('type') === 'file') {
+                    variation[$(this).attr('name')] = $(this)[0].files[0];
+                } else {
+                    variation[$(this).attr('name')] = $(this).val();
+                }
             });
             variations.push(variation);
             ++index;
         });
     }
-
     formData.delete('variable_stock');
     formData.delete('variable_price');
     formData.delete('variable_orders');
@@ -55,12 +60,16 @@ $('#createproduct-form').submit(function (e) {
     formData.delete('variable_discount');
     formData.delete('variable_img');
 
-    JSON.stringify(formData);
+    // JSON.stringify(formData);
 
     for (var i = 0; i < variations.length; i++) {
+        var variationName = 'variations_' + i;
+        if (variations[i]['variable_img']) {
+            formData.append(variationName + '_img', variations[i]['variable_img']);
+        }
         formData.append('variations_' + i, JSON.stringify(variations[i]));
     }
-
+    console.log(formData.get('variations_0'));
     $.ajax({
         url: '/add-product',
         type: 'POST',
