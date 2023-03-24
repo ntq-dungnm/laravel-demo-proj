@@ -29,15 +29,23 @@ class addProductController extends Controller
 
     public function store(Request $req)
     {
+
         $product = $req->all();
-        dd($product);
+        $variations = [];
+
         foreach ($product as $key => $value) {
             if (strpos($key, 'variations_') !== false) {
-                unset($product[$key]);
                 $variations[$key] = json_decode($value, true);
+                if (strpos($key, 'variations_') !== false && strpos($key, '_img') !== false) {
+                    unset($product[$key]);
+                    $variable_img = $value;
+                    $variations_key = str_replace('_img', '', $key);
+                    $variations[$variations_key]['variable_img'] = $variable_img;
+                    unset($variations[$key]);
+                }
             }
         }
-        dd($variations);
+        // dd($variations);
         $this->productService->addProduct($product, $variations);
     }
 }

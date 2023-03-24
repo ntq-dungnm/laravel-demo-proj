@@ -12,5 +12,6 @@ class ProductVariable extends Model
     protected $fillable = [
         'product_id',
         'regular_price',
+        'image',
     ];
 }

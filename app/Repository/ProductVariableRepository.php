@@ -19,8 +19,10 @@ class ProductVariableRepository implements BaseRepository
 
     public static function create($product)
     {
+        // dd($product);
         return  ProductVariable::create([
             'product_id' => $product['product_id'],
+            'image' => $product['img'],
             'regular_price' => $product['price'],
         ]);
     }
