@@ -36,8 +36,8 @@ class addProductController extends Controller
         foreach ($product as $key => $value) {
             if (strpos($key, 'variations_') !== false) {
                 $variations[$key] = json_decode($value, true);
+                unset($product[$key]);
                 if (strpos($key, 'variations_') !== false && strpos($key, '_img') !== false) {
-                    unset($product[$key]);
                     $variable_img = $value;
                     $variations_key = str_replace('_img', '', $key);
                     $variations[$variations_key]['variable_img'] = $variable_img;
@@ -45,7 +45,6 @@ class addProductController extends Controller
                 }
             }
         }
-        // dd($variations);
         $this->productService->addProduct($product, $variations);
     }
 }

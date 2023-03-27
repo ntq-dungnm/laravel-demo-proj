@@ -12,4 +12,5 @@ interface BaseRepository
     public static function create(array $data);
     public function delete($id);
     public function edit($id);
+    public function getBySlug($slug);
 }

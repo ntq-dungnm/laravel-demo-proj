@@ -12,6 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttributesRepository implements BaseRepository
 {
+    public function getBySlug($slug){
+        
+    }
+    
     public function getById($id)
     {
         return Attribute::where('id', $id)

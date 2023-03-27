@@ -7,6 +7,9 @@ use App\Models\AttributeProductVariable;
 
 class AttributeProductVariableRepository implements BaseRepository
 {
+    public function getBySlug($slug){
+        
+    }
     public function getById($id)
     {
     }

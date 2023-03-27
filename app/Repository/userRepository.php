@@ -8,6 +8,10 @@ use DB;
 
 class userRepository implements BaseRepository
 {
+    public function getBySlug($slug)
+    {
+    }
+
     protected $userRepository;
 
     public function __construct(UserRepository $userRepository)
@@ -49,7 +53,7 @@ class userRepository implements BaseRepository
     {
         return null;
     }
-    
+
     public static function getByName($name)
     {
         return null;

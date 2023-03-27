@@ -14,4 +14,9 @@ class ProductVariable extends Model
         'regular_price',
         'image',
     ];
+
+    public function attributes()
+    {
+        return $this->hasMany(AttributeProductVariable::class, 'product_variable_id');
+    }
 }

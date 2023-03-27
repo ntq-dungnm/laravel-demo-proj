@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\addProductController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\orderHandleController;
 use App\Http\Controllers\admin\orderDetailsController;
+use App\Http\Controllers\admin\ProductViewController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\ProductVariablesController;
@@ -61,3 +62,9 @@ Route::get('add-category', [CategoryController::class, 'show'])->name('add-categ
 Route::post('add-category', [CategoryController::class, 'store']);
 
 Route::get('product-variables', [ProductVariablesController::class, 'show'])->name('product-variables');
+
+Route::get('product-view/{slug}', [ProductViewController::class, 'show'])->name('product-view');
+
+Route::get('a', function () {
+    return  \App\Models\Product::with('variables.attributes.values.attribute')->first(); 
+});

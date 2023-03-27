@@ -35,6 +35,7 @@ class ProductRepository implements BaseRepository
             'description' => $product['description'],
             'total_stocks' => $product['stock'],
             'status' => $product['status'],
+            'thumnail' => $product['thumnail'],
         ]);
         return $newProduct;
     }
@@ -53,5 +54,10 @@ class ProductRepository implements BaseRepository
     public static function getByName($name)
     {
         return null;
+    }
+
+    public function getBySlug($slug)
+    {
+        return  Product::where('slug', $slug)->first();
     }
 }

@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoriesRepository implements BaseRepository
 {
-
+    public function getBySlug($slug){
+        
+    }
 
     public function getById($id)
     {
