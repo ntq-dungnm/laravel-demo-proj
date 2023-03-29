@@ -22,7 +22,6 @@ class AttributeProductVariableRepository implements BaseRepository
     {
         $attributeValueIds = $productVariable['attribute_value_id'];
         $productVariableId = $productVariable['product_variable_id'];
-
         foreach ($attributeValueIds as $attributeValueId) {
             AttributeProductVariable::create([
                 'attribute_value_id' => $attributeValueId,

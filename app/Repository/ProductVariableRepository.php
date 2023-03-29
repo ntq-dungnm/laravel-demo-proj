@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Repository\BaseRepository;
 use App\Models\ProductVariable;
+use App\Models\Product;
 
 class ProductVariableRepository implements BaseRepository
 {
@@ -11,12 +12,9 @@ class ProductVariableRepository implements BaseRepository
 
     public function getById($productId)
     {
-        return ProductVariable::where('product_id', $productId)
-            ->join('Attribute_product_variables', 'product_variables.id', '=', 'attribute_product_variables.product_variable_id')
-            ->join('Attribute_values', 'attribute_product_variables.attribute_value_id', '=', 'attribute_values.id')
-            ->join('Attributes', 'Attribute_values.attribute_id', '=', 'Attributes.id')
-            // ->groupBy('Attribute_product_variables.product_variable_id')
-            ->get();
+        return Product::with('variables.attributes.values.attribute')
+        ->where('id', $productId)
+        ->get();
     }
 
     public static function getAll()

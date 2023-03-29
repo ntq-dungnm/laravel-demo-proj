@@ -13,8 +13,10 @@ class AttributeProductVariable extends Model
         'attribute_value_id',
         'product_variable_id',
     ];
-    
-    public function values() {
+
+    public function values()
+    {
         return $this->belongsTo(AttributeValue::class, 'attribute_value_id');
     }
+
 }

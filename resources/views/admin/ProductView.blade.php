@@ -2285,7 +2285,7 @@
                                             <input type="hidden" class="form-control" id="formAction"
                                                 name="formAction" value="add">
                                             <input type="text" class="form-control d-none"
-                                                id="product-id-input">
+                                                id="product-id-input">  
                                             <input type="text" class="form-control" id="product-title-input"
                                                 value="{{ $thisProduct->title }} " placeholder="Enter product title" name="title">
                                             <div class="invalid-feedback">.</div>
@@ -2637,6 +2637,8 @@
 
                                     <!-- end row -->
                                 </div>
+                                @foreach ($productVariables->attributes as $variable)
+                                    
                                 <div class="product-container">
                                     <div class="card productVariable">
 
@@ -2698,7 +2700,7 @@
                                                             id="product-price-input" placeholder="Price"
                                                             aria-label="Price"
                                                             aria-describedby="product-price-addon"
-                                                            name="variable_price" required>
+                                                            name="variable_price" value={{ $variable->regular_price }}>
                                                         <div class="invalid-feedback">Please Enter a product
                                                             price.</div>
                                                     </div>
@@ -2716,7 +2718,7 @@
                                                             id="product-discount-input"
                                                             placeholder="variable_discount" aria-label="discount"
                                                             aria-describedby="product-discount-addon"
-                                                            name="variable_discount">
+                                                            name="variable_discount" value={{ $variable->regular_price  }}>
                                                     </div>
                                                 </div>
 
@@ -2756,6 +2758,8 @@
                                     </div>
 
                                 </div>
+                                @endforeach
+
                                 <button type="button" id="add-section-btn" class="btn btn-primary w-sm">Create
                                     Product Variables</button>
                                 <button type="submit" class="btn btn-primary w-sm">Submit</button>
