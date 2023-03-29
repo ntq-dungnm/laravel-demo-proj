@@ -2637,7 +2637,7 @@
 
                                     <!-- end row -->
                                 </div>
-                                @foreach ($productVariables->attributes as $variable)
+                                @foreach ($productVariables as $variable)
                                     
                                 <div class="product-container">
                                     <div class="card productVariable">
@@ -2670,7 +2670,7 @@
                                                         </div>
                                                         <div class="avatar-lg">
                                                             <div>
-                                                                <img id="product-variable-img"
+                                                                <img src="{{ $variable['image'] }}" id="product-variable-img"
                                                                     class="avatar-md h-auto" />
                                                             </div>
                                                         </div>
@@ -2684,9 +2684,8 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="stocks-input">Stocks</label>
                                                     <input type="text" class="form-control" id="stocks-input"
-                                                        placeholder="Stocks" name="variable_stock" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        stocks.</div>
+                                                        placeholder="Stocks" name="variable_stock" value="{{ $variable['variable_stock'] }}">
+                                                    <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
@@ -2700,7 +2699,7 @@
                                                             id="product-price-input" placeholder="Price"
                                                             aria-label="Price"
                                                             aria-describedby="product-price-addon"
-                                                            name="variable_price" value={{ $variable->regular_price }}>
+                                                            name="variable_price" value={{ $variable['regular_price'] }}>
                                                         <div class="invalid-feedback">Please Enter a product
                                                             price.</div>
                                                     </div>
@@ -2718,7 +2717,7 @@
                                                             id="product-discount-input"
                                                             placeholder="variable_discount" aria-label="discount"
                                                             aria-describedby="product-discount-addon"
-                                                            name="variable_discount" value={{ $variable->regular_price  }}>
+                                                            name="variable_discount" value={{ $variable['variable_discount']  }}>
                                                     </div>
                                                 </div>
 
@@ -2727,27 +2726,24 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="orders-input">Orders</label>
                                                     <input type="text" class="form-control" id="orders-input"
-                                                        placeholder="Orders" name="variable_orders" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        orders.</div>
+                                                        placeholder="Orders" name="variable_orders" value="{{ $variable['variable_orders'] }}">
+                                                    <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="orders-input">Color</label>
                                                     <input type="text" class="form-control" id="orders-input"
-                                                        placeholder="Color" name="variable_color" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        orders.</div>
+                                                        placeholder="Color" name="variable_color" value="{{ $variable['variable_color'] }}">
+                                                    <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="orders-input">Size</label>
                                                     <input type="text" class="form-control" id="orders-input"
-                                                        placeholder="Size" name="variable_size" required>
-                                                    <div class="invalid-feedback">Please Enter a product
-                                                        orders.</div>
+                                                        placeholder="Size" name="variable_size" value="{{ $variable['variable_color'] }}">
+                                                    <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <!-- end col -->

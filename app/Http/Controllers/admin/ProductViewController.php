@@ -30,19 +30,11 @@ class ProductViewController extends Controller
         $finalVariables = [];
         foreach ($productVariables as $key => $values) {
             foreach ($values['attributes'] as $item) {
-                $finalVariables[$item['values']['attribute']['name']] = $item['values']['value'];
+                $finalVariables[$key][$item['values']['attribute']['name']] = $item['   values']['value'];
             }
+            $finalVariables[$key]['image'] = $values['image'];
+            $finalVariables[$key]['regular_price'] = $values['regular_price'];
         }
-        dd($finalVariables);
-        // foreach ($productVariables as $key => $value) {
-        //     dd($value->attributes['0']['values']);
-        // }
-        // dd($productVariables['0']['attributes']['0']['values']['value']);
-        // $variablesAttributes = $productVariables->attributes;
-        // dd($variablesAttributes);
-        // dd($variablesAttributes->first()->values->first()); 
-        // dd($productVariables->first()->attributes->first()->values->first());
-        // dd($productVariables->first()->attributes->first()->attribute_value_id);
-        return view('admin.ProductView', ['thisProduct' => $hehe, 'productVariables' => $productVariables]);
+        return view('admin.ProductView', ['thisProduct' => $hehe, 'productVariables' => $finalVariables]);
     }
 }
