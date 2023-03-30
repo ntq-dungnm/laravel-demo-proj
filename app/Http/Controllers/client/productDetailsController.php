@@ -17,7 +17,6 @@ class productDetailsController extends Controller
     public function chooseColor(Request $req)
     {
         $data = $req->all();
-
         $color = [
             'blue' => [
                 'price' => 1,

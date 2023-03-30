@@ -22,6 +22,7 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 </head>
 
@@ -1870,7 +1871,7 @@
                                                 <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block">
                                             </div>
                                         </div>
-                                        <div class="col-sm">
+                                        <div class="col-sm" >
                                             <h5 class="fs-14 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">Sweatshirt for Men (Pink)</a></h5>
                                             <ul class="list-inline text-muted">
                                                 <li class="list-inline-item">Color : <span class="fw-medium">Pink</span></li>
@@ -1878,9 +1879,9 @@
                                             </ul>
 
                                             <div class="input-step">
-                                                <button type="button" class="minus">–</button>
-                                                <input type="number" class="product-quantity" value="2" min="0" max="100">
-                                                <button type="button" class="plus">+</button>
+                                                <button type="button" class="minus decrease" data-id="sweater">–</button>
+                                                <input type="number" class="product-quantity sweater" value="2" min="0" max="100">
+                                                <button type="button" id="hihi" class="plus increase" data-id="sweater">+</button>
                                             </div>
                                         </div>
                                         <div class="col-sm-auto">
@@ -1933,9 +1934,9 @@
                                             </ul>
 
                                             <div class="input-step">
-                                                <button type="button" class="minus">–</button>
+                                                <button type="button" class="minus decrease" data-id="watch">–</button>
                                                 <input type="number" class="product-quantity" value="1" min="0" max="100">
-                                                <button type="button" class="plus">+</button>
+                                                <button type="button" class="plus" data-id="watch" >+</button>
                                             </div>
                                         </div>
                                         <div class="col-sm-auto">
@@ -1988,9 +1989,9 @@
                                             </ul>
 
                                             <div class="input-step">
-                                                <button type="button" class="minus">–</button>
+                                                <button type="button" class="minus decrease" data-id="stuff">–</button>
                                                 <input type="number" class="product-quantity" value="1" min="0" max="100">
-                                                <button type="button" class="plus">+</button>
+                                                <button type="button" class="plus" data-id="stuff" >+</button>
                                             </div>
                                         </div>
                                         <div class="col-sm-auto">
@@ -2835,6 +2836,8 @@
     </div>
 
     <!-- JAVASCRIPT -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/node-waves/waves.min.js"></script>
@@ -2847,7 +2850,7 @@
 
     <!-- ecommerce cart js -->
     <script src="assets/js/pages/ecommerce-cart.init.js"></script>
-
+    <script src="assets/js/shoppingCart.js"></script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
 </body>

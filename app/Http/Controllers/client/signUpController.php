@@ -5,18 +5,19 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use app\Repository\userRepository;
+use App\Repository\userRepository as RepositoryUserRepository;
 use Session;
 
 class signUpController extends Controller
 {
-    private $users = array();
+   
     public function getSignUp()
     {
         return view('client.signUp');
     }
 
-    public function postSignUp(Request $req)
+    public static function postSignUp(Request $req)
     {
         $rules = [
             'email' => 'required|email',
@@ -29,8 +30,15 @@ class signUpController extends Controller
         ];
         $req->validate($rules, $messages);
 
-        Session::put($req->userName);
-        Session::put(bcrypt($req->password));
+        $email = $req->email;
+        $fullName = $req->userName;
+        $password = bcrypt($req->password);
+
+        $user = [
+            'fullName' => $fullName, 'email' => $email, 'password' => $password
+        ];
+
+        RepositoryUserRepository::create($user);
 
         return redirect()->route('sign.in');
     }

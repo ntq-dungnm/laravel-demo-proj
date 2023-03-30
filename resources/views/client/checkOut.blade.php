@@ -21,7 +21,10 @@
     <!-- App Css-->
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 </head>
 
@@ -1891,48 +1894,55 @@
                                                 <div>
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <div class="mb-3">
-                                                                <label for="billinginfo-firstName" class="form-label">First Name</label>
-                                                                <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="">
+                                                            <div class="mb-3 fName">
+                                                                <label for="billinginfo-firstName" class="form-label ">First Name</label>
+                                                                <input type="text" class="form-control " id="billinginfo-firstName " placeholder="Enter first name"  value="">
+                                                                <small ></small>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-6">
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 lName" >
                                                                 <label for="billinginfo-lastName" class="form-label">Last Name</label>
-                                                                <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Enter last name" value="">
+                                                                <input type="text" class="form-control lName" id="billinginfo-lastName" placeholder="Enter last name" value="">
+                                                                <small class=""></small>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 email">
                                                                 <label for="billinginfo-email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                                                <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email">
+                                                                <input type="email" class="form-control email" id="billinginfo-email" placeholder="Enter email">
+                                                                <small class=""></small>
+                                                          
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-6">
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 phoneNumber">
                                                                 <label for="billinginfo-phone" class="form-label">Phone</label>
-                                                                <input type="text" class="form-control" id="billinginfo-phone" placeholder="Enter phone no.">
+                                                                <input type="text" class="form-control phoneNumber" id="billinginfo-phone" placeholder="Enter phone no.">
+                                                                <small class=""></small>
+                                                          
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 address">
                                                         <label for="billinginfo-address" class="form-label">Address</label>
-                                                        <textarea class="form-control" id="billinginfo-address" placeholder="Enter address" rows="3"></textarea>
+                                                        <textarea class="form-control" id="billinginfo-address address" placeholder="Enter address" rows="3"></textarea>
+                                                        <small class=""></small>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-md-4">
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 ">
                                                                 <label for="country" class="form-label">Country</label>
-                                                                <select class="form-select" id="country" data-plugin="choices">
+                                                                <select class="form-select " id="country" data-plugin="choices" required>
                                                                     <option value="">Select Country...</option>
-                                                                    <option selected>United States</option>
+                                                                    <option selected >United States</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1940,7 +1950,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="state" class="form-label">State</label>
-                                                                <select class="form-select" id="state" data-plugin="choices">
+                                                                <select class="form-select" id="state" data-plugin="choices" required>
                                                                     <option value="">Select State...</option>
                                                                     <option value="Alabama">Alabama</option>
                                                                     <option value="Alaska">Alaska</option>
@@ -1967,14 +1977,14 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="zip" class="form-label">Zip Code</label>
-                                                                <input type="text" class="form-control" id="zip" placeholder="Enter zip code">
+                                                                <input type="text" class="form-control zipCode" id="zip" placeholder="Enter zip code">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="d-flex align-items-start gap-3 mt-3">
-                                                        <button type="button" class="btn btn-primary btn-label right ms-auto nexttab" data-nexttab="pills-bill-address-tab">
-                                                            <i class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Proceed to Shipping
+                                                        <button type="button" class="btn btn-primary btn-label right ms-auto nexttab proceedShipping" data-nexttab="pills-bill-address-tab">
+                                                            <i class="ri-truck-line label-icon align-middle fs-16 ms-2 proceedShipping"></i>Proceed to Shipping
                                                         </button>
                                                     </div>
                                                 </div>
@@ -2208,9 +2218,9 @@
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark">Sweatshirt for Men (Pink)</a></h5>
-                                                        <p class="text-muted mb-0">$ 119.99 x 2</p>
+                                                        <p class="text-muted mb-0">$ {{ $allProduct[0]['price'] }} x {{ $allProduct[0]['quantity'] }}</p>
                                                     </td>
-                                                    <td class="text-end">$ 239.98</td>
+                                                    <td class="text-end">${{ $allProduct[0]['price'] * $allProduct[0]['quantity']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -2220,9 +2230,10 @@
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark">Noise Evolve Smartwatch</a></h5>
-                                                        <p class="text-muted mb-0">$ 94.99 x 1</p>
+                                                        <p class="text-muted mb-0">${{ $allProduct[2]['price'] }} x {{ $allProduct[2]['quantity'] }}</p>
                                                     </td>
-                                                    <td class="text-end">$ 94.99</td>
+                                                    <td class="text-end">${{ $allProduct[2]['price'] * $allProduct[2]['quantity']}}</td>
+                                                </tr></td>
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -2232,13 +2243,14 @@
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark">350 ml Glass Grocery Container</a></h5>
-                                                        <p class="text-muted mb-0">$ 24.99 x 1</p>
+                                                        <p class="text-muted mb-0">${{ $allProduct[1]['price'] }} x {{ $allProduct[1]['quantity'] }}</p>
                                                     </td>
-                                                    <td class="text-end">$ 24.99</td>
+                                                    <td class="text-end">${{ $allProduct[1]['price'] * $allProduct[1]['quantity']}}</td>
+                                                </tr></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="fw-semibold" colspan="2">Sub Total :</td>
-                                                    <td class="fw-semibold text-end">$ 359.96</td>
+                                                    <td class="fw-semibold text-end">${{ $allProduct[0]['price'] * $allProduct[0]['quantity'] + $allProduct[1]['price'] * $allProduct[1]['quantity'] +  $allProduct[2]['price'] * $allProduct[2]['quantity']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">Discount <span class="text-muted">(VELZON15)</span> : </td>
@@ -2256,7 +2268,7 @@
                                                     <th colspan="2">Total (USD) :</th>
                                                     <td class="text-end">
                                                         <span class="fw-semibold">
-                                                            $353.15
+                                                            ${{ $allProduct[0]['price'] * $allProduct[0]['quantity'] + $allProduct[1]['price'] * $allProduct[1]['quantity'] +  $allProduct[2]['price'] * $allProduct[2]['quantity'] - 50 +24.99 +18.20}}
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -3063,6 +3075,7 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/checkOut.js"></script>
 </body>
 
 </html>

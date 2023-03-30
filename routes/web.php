@@ -8,12 +8,13 @@ use App\Http\Controllers\client\shoppingCartController;
 use App\Http\Controllers\client\checkOutController;
 use App\Http\Controllers\admin\productHandleController;
 use App\Http\Controllers\admin\addProductController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\orderHandleController;
 use App\Http\Controllers\admin\orderDetailsController;
-
-
+use App\Http\Controllers\admin\ProductViewController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\admin\ProductVariablesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,17 +42,29 @@ Route::get('product-details', [productDetailsController::class, 'getProductDetai
 
 Route::post('chooseColor', [productDetailsController::class, 'chooseColor']);
 
-
 Route::get('shopping-cart', [shoppingCartController::class, 'getShoppingCart']);
 
 Route::get('check-out', [checkOutController::class, 'getCheckOut'])->name('check-out');
 
 
-Route::get('product-handle', [productHandleController::class, 'getProductHandle']);
+Route::get('product-handle', [productHandleController::class, 'getProductHandle'])->name('product-handle');
 
-
-Route::get('add-product', [addProductController::class, 'getAddProduct']);
+Route::get('add-product', [addProductController::class, 'show']);
+Route::post('add-product', [addProductController::class, 'store']);
 
 Route::get('order-handle', [orderHandleController::class, 'getOrderHandle']);
 
 Route::get('order-details', [orderDetailsController::class, 'getOrderDetails']);
+
+Route::post('update-product', [shoppingCartController::class, 'handleProduct']);
+
+Route::get('add-category', [CategoryController::class, 'show'])->name('add-category');
+Route::post('add-category', [CategoryController::class, 'store']);
+
+Route::get('product-variables', [ProductVariablesController::class, 'show'])->name('product-variables');
+
+Route::get('product-view/{slug}', [ProductViewController::class, 'show'])->name('product-view');
+
+Route::get('a', function () {
+    return  \App\Models\Product::with('variables.attributes.values.attribute')->first(); 
+});
